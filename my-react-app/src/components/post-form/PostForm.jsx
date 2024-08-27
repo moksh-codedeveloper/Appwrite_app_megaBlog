@@ -32,7 +32,7 @@ export default function PostForm({post}) {
             setTitle('');
             setContent('');
             if(post) {
-                data.image[0] ? service.uploadFile(data.image[0]) : null;
+                const file = data.image[0] ? service.uploadFile(data.image[0]) : null;
                 if(file) {
                     service.deleteFile(post.featuredImage);
                 }
@@ -116,7 +116,7 @@ export default function PostForm({post}) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            src={service.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
