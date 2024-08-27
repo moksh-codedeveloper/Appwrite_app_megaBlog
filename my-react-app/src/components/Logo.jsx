@@ -1,9 +1,9 @@
 import React from 'react'
-
-function Logo({width = '100px'}) {
+import MyLogo from './Logo.jpg'
+function Logo({width = '10px'}) {
     return (
         <div>
-            <img src="" alt='this is a logo'/>
+            <img src={MyLogo}/>
         </div>
     )
 }

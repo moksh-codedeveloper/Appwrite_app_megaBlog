@@ -24,7 +24,6 @@ export class Service {
                 {
                     title,
                     content,
-                    slug,
                     featuredImage,
                     status,
                     userId,
@@ -85,11 +84,12 @@ export class Service {
 
     async getAllPost(queries = [Query.equal("status", "active")]){
         try {
-            await this.databases.listDocuments(
+            return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries,
             )
+            // return true;
         } catch (error) {
             console.log("error getting all documents", error);
             return false;

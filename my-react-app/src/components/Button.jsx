@@ -8,8 +8,11 @@ function Button({
     className = '',
     ...props
 }){
+    const onClick = (e) => {
+        e.preventDefault();
+    }
     return (
-        <button className={`px-4 py-2 rounded-lg ${className} ${bgColor} ${textColor}`} {...props}>
+        <button className={`px-4 py-2 rounded-lg ${className} ${bgColor} ${textColor}`} {...props} onChange={onClick}>
             {children}
         </button>
     )

@@ -1,6 +1,8 @@
 import React from 'react'
 import appwriteService from '../appwrite/config';
 import {Link} from 'react-router-dom'
+import Post from '../pages/Post';
+import postSlice from '../store/postSlice';
 function PostCard({
     $id, 
     title,
@@ -11,7 +13,7 @@ function PostCard({
             <div
             className='w-full bg-gray-100 rounded-xl p-4'
             >
-                <div className='w-full justify-center mb-4'>\
+                <div className='w-full justify-center mb-4'>
                     <img src={appwriteService.getFilePreview(featuredImage)} alt={title}
                     className='rounded-xl'/>
 
@@ -22,6 +24,7 @@ function PostCard({
             >
             {title}
             </h2>
+
         </Link>
     )
 }

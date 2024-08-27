@@ -1,10 +1,10 @@
-import React, {useCallback, useEffect} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import { useForm } from 'react-hook-form'
 import {Button, Input, Select, RTE} from '../index.js'
 import service from '../../appwrite/config.js'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import {addPost} from '../../store/postSlice.js'
 export default function PostForm({post}) {
     const {register, handleSubmit, watch, setValue,
         control, getValues} = useForm({
@@ -14,10 +14,23 @@ export default function PostForm({post}) {
                 status: post?.status || 'active',
             },
         })
-
+        // const featuredImage = service.getFilePreview(post.featuredImage);
+        const dispatch = useDispatch();
+        const [title, setTitle] = useState('');
+        const [content, setContent] = useState('');
         const navigate = useNavigate();
-        const userData = useSelector(state => state.user.userData);
-        const submit = async (data) => {
+        const userData = useSelector(state => state.auth.userData);
+        const submit = async (data, e) => {
+            e.preventDefault();
+    // Validate input and handle image upload if needed
+            const newPost = {
+                title,
+                content,
+            };
+            dispatch(addPost(newPost));
+            // Clear form fields
+            setTitle('');
+            setContent('');
             if(post) {
                 data.image[0] ? service.uploadFile(data.image[0]) : null;
                 if(file) {
@@ -77,6 +90,7 @@ export default function PostForm({post}) {
                     label="Title :"
                     placeholder="Title"
                     className="mb-4"
+                    onChange={(e) => setTitle(e.target.value)}
                     {...register("title", { required: true })}
                 />
                 <Input
@@ -88,7 +102,7 @@ export default function PostForm({post}) {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} onChange={(e) => setContent(e.target.value)}/>
             </div>
             {/* // right part  */}
             <div className="w-1/3 px-2">
@@ -114,7 +128,7 @@ export default function PostForm({post}) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
+                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} onChange={addPost(post)} className="w-full">
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>
