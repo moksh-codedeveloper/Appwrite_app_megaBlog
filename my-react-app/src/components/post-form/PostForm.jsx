@@ -89,14 +89,14 @@ export default function PostForm({post}) {
                 <Input
                     label="Title :"
                     placeholder="Title"
-                    className="mb-4"
+                    className="mb-4 hover:bg-blue-600 hover:text-white"
                     onChange={(e) => setTitle(e.target.value)}
                     {...register("title", { required: true })}
                 />
                 <Input
                     label="Slug :"
                     placeholder="Slug"
-                    className="mb-4"
+                    className="mb-4 bg-blue-400 hover:bg-blue-700 text-white"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
@@ -109,12 +109,12 @@ export default function PostForm({post}) {
                 <Input
                     label="Featured Image :"
                     type="file"
-                    className="mb-4"
+                    className="mb-4 text-justify text-white bg-black hover:bg-black"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !post })}
                 />
                 {post && (
-                    <div className="w-full mb-4">
+                    <div className="w-full mb-4 bg-cyan-600">
                         <img
                             src={service.getFilePreview(post.featuredImage)}
                             alt={post.title}
@@ -125,10 +125,10 @@ export default function PostForm({post}) {
                 <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4"
+                    className="mb-4 font-thin"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} onChange={addPost(post)} className="w-full">
+                <Button type="submit" bgColor={post ? "bg-green-500 text-white" : undefined} onChange={addPost(post)} className="w-full text-white bg-cyan-400">
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>

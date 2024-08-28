@@ -20,7 +20,7 @@ function PostCard({
                 </div>
             </div>
             <h2
-            className='text-xl font-bold'
+            className='text-xl font-bold hover:text-white hover:underline '
             >
             {title}
             </h2>
