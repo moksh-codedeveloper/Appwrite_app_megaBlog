@@ -83,20 +83,20 @@ export default function PostForm({post}) {
 
         // logic part ends 
     return (
-       <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+       <form onSubmit={handleSubmit(submit)} className="flex flex-wrap text-black">
         {/* // left part */}
             <div className="w-2/3 px-2">
                 <Input
                     label="Title :"
                     placeholder="Title"
-                    className="mb-4 hover:bg-blue-600 hover:text-white"
+                    className="mb-4 hover:bg-blue-600 text-black"
                     onChange={(e) => setTitle(e.target.value)}
                     {...register("title", { required: true })}
                 />
                 <Input
                     label="Slug :"
                     placeholder="Slug"
-                    className="mb-4 bg-blue-400 hover:bg-blue-700 text-white"
+                    className="mb-4 bg-blue-400 hover:bg-blue-700 text-black"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
@@ -118,7 +118,7 @@ export default function PostForm({post}) {
                         <img
                             src={service.getFilePreview(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg"
+                            className="rounded-lg h-11"
                         />
                     </div>
                 )}
