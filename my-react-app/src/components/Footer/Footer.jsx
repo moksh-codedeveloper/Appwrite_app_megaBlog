@@ -10,7 +10,7 @@ function Footer() {
                     <div className="w-full p-6 md:w-1/2 lg:w-5/12">
                         <div className="flex h-full flex-col justify-between">
                             <div className="mb-4 inline-flex items-center">
-                                <Logo width="1px" className="h-1 w-3 p-1 px-3 py-4" />
+                                <Logo width = "100px" />
                             </div>
                             <div>
                                 <p className="text-sm text-green-600">

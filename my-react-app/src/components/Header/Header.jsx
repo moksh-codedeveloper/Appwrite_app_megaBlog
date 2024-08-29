@@ -41,15 +41,11 @@ function Header() {
   },
   ]
 
-
   return (
-    <header className='py-3 shadow-inner bg-red-500'>
+    <header className='py-3 shadow-inner bg-red-500 hover:text-black flex flex-initial'>
       <Container>
         <nav className='flex'>
           <div className='mr-4'>
-            <Link to='/'>
-              <Logo width='10px'/>
-            </Link>
           </div>
           <ul className='flex ml-auto flex-wrap'>
             {navItems.map((item) => 
