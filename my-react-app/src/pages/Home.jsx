@@ -21,7 +21,6 @@ function Home() {
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
                                 loading.... your posts,
-                                create more posts
                             </h1>
                         </div>
                     </div>
@@ -30,15 +29,19 @@ function Home() {
         )
     }
     return (
-        <div className='w-full py-8'>
+        <div className='w-full py-8 grid-flow-col-dense flex flex-auto top-2 text-center'>
             <Container>
                 <div className='flex flex-wrap'>
                     {posts.map((post) => (
                         <div key={post.$id} className='p-2 w-1/4'>
                             <PostCard {...post} />
-                            create more post encourage others too capture there moments and then save here 
                         </div>
                     ))}
+                    <div className='p-2 m-1 flex flex-wrap flex-1 text-center justify-center'>
+                        <p className='font-bold font-mono text-xl text-violet-600'>
+                            create more post encourage others too capture there moments and then save here 
+                        </p>
+                    </div>
                 </div>
             </Container>
         </div>
