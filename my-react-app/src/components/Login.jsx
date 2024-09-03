@@ -23,6 +23,9 @@ function Login() {
             setError(error.message);
         }
     }
+    const sendOTP = async () => {
+        
+    }
     return (
         <div
     className='flex items-center justify-center w-full'
