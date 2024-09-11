@@ -6,25 +6,24 @@ const client = new Client()
 
 const account = new Account(client);
 
-const sendOtp = async (slug, emailId) => {
+const sendOtp = async (emailId) => {
     try {
-        const sessionToken = await account.createEmailToken(
-            slug,
-            emailId
-        );
+        const sessionToken = await account.createEmailToken(emailId);
         return sessionToken.userId;
     } catch (error) {
         console.error('Error creating session:', error);
     }
 }
-const verifyOtp = async (userId, emailId) => {
+const verifyOtp = async (secret, userId) => {
     try {
-        const sessionToken = await account.createEmailVerificationToken(
+        const sessionToken = await account.updateVerification(
             userId,
-            emailId,
+            secret
         );
-        return sessionToken.userId;
+        return sessionToken;
     } catch (error) {
         console.error('Error creating session:', error);
     }
 }
+
+export {verifyOtp, sendOtp};

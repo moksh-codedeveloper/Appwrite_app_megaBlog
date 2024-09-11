@@ -5,6 +5,7 @@ import {Button, Input, Logo} from './index.js'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth.js'
 import {useForm} from "react-hook-form"
+// import OTP from './OTP/OTP.jsx'
 function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -22,9 +23,6 @@ function Login() {
         } catch (error) {
             setError(error.message);
         }
-    }
-    const sendOTP = async () => {
-        
     }
     return (
         <div
@@ -69,6 +67,7 @@ function Login() {
                     required: true,
                 })}
                 />
+                {/* <OTP/> */}
                 <Button
                 type="submit"
                 className="w-full"
